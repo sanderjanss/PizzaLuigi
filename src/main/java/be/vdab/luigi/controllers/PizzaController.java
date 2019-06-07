@@ -2,6 +2,7 @@ package be.vdab.luigi.controllers;
 
 import be.vdab.luigi.domain.Pizza;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import java.util.*;
 @Controller
 @RequestMapping("pizzas")
 public class PizzaController {
+//    Hier worden de controller methods van de templates geschreven.
 
     private final Pizza[] pizzas = {
             new Pizza(1, "Prosciutto", BigDecimal.valueOf(4), true),
@@ -37,4 +39,7 @@ public class PizzaController {
                 .ifPresent(pizza -> modelAndView.addObject("pizza", pizza));
         return modelAndView;
     }
+    
+
+
 }

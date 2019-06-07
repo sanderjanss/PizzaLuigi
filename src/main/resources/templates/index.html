@@ -6,7 +6,6 @@
 <nav th:replace="fragmenten::menu"></nav>
 <img th:src="@{/images/luigi.jpg}" alt="pizza" class="fullwidth">
 <h2>Goede <span th:text="${boodschap}"></span> pizzalovers</h2>
-
 <h2>De zaakvoerder</h2>
 <dl th:object="${zaakvoerder}">
     <dt>Naam</dt>
@@ -18,5 +17,8 @@
     <dt>Adres</dt>
     <dd th:object="${zaakvoerder.adres}"
         th:text="|*{straat} *{huisNr} *{postcode} *{gemeente}|"></dd></dl>
+
+<h4>De kleur van de gekozen cookie:</h4>
+<h4 th:text="${kleur}"></h4>
 </body>
 </html>
