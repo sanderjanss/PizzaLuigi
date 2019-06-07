@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Pizza's</title>
-    <link rel="icon" href="images/luigi.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/luigi.css">
-</head>
+<head th:replace="fragmenten::head(title='Pizza\'s')"></head>
 <body>
-<h1>Aanbod Pizzas!</h1>
-<img src="images/luigi.jpg" alt="pizza" class="fullwidth">
+<h1>Pizza Luigi</h1>
+<nav th:replace="fragmenten::menu"></nav>
+<h2>Aanbod pizzas!</h2>
+<img th:src="@{/images/luigi.jpg}" alt="pizza" class="fullwidth">
 <ul class="zebra">
     <li th:each="pizza:${pizzas}" th:object="${pizza}">
         <span th:text="|*{naam} EUR *{prijs}|"></span>
