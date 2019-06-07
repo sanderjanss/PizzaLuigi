@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Menu</title>
+<head th:fragment="head(title)" xmlns:th="http://www.thymeleaf.org">
+    <link rel="icon" th:href="@{/images/luigi.ico}" type="image/x-icon">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/css/luigi.css}">
 </head>
 <body>
 <nav th:fragment="menu" xmlns:th='http://www.thymeleaf.org'>
@@ -10,13 +11,6 @@
         <li><a th:href="@{/}">Welkom</a></li>
         <li><a th:href="@{/pizzas}">Pizza's</a></li>
     </ul>
-</nav>
-
-<nav th:fragment="head(title)" xmlns:th='http://www.thymeleaf.org'>
-    <meta charset="UTF-8">
-    <title th:text="${title}"></title>
-    <link rel="icon" th:href="@{/images/luigi.ico}" type="image/x-icon">
-    <link rel="stylesheet" th:href="@{/css/luigi.css}">
 </nav>
 
 </body>
