@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza's</title>
+    <link rel="icon" href="images/luigi.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/luigi.css">
+</head>
+<body>
+<h1>Aanbod Pizzas!</h1>
+<img src="images/luigi.jpg" alt="pizza" class="fullwidth">
+<ul class="zebra">
+    <li th:each="pizza:${pizzas}" th:object="${pizza}">
+        <span th:text="|*{naam} EUR *{prijs}|"></span>
+        <span th:if="*{pikant}"> pikant</span>
+    </li>
+</ul>
+
+</body>
+</html>

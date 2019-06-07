@@ -27,7 +27,7 @@ class IndexController {
     @GetMapping
     public ModelAndView index() {
 
-            ModelAndView modelAndView = new ModelAndView("index", "boodschap", "morgeuh");
+            ModelAndView modelAndView = new ModelAndView("index", "boodschap", boodschap());
             modelAndView.addObject("zaakvoerder", new Persoon("Sander", "Janssens",
                     0, false, LocalDate.of(1992,7,9), new Adres("Oversneslaan", "47", 2610, "Wilrijk")));
             return modelAndView;
