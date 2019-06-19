@@ -18,7 +18,11 @@
     <dd th:object="${zaakvoerder.adres}"
         th:text="|*{straat} *{huisNr} *{postcode} *{gemeente}|"></dd></dl>
 
-<h4>De kleur van de gekozen cookie:</h4>
-<h4 th:text="${kleur}"></h4>
+
+<!--De kleur die we doorgaven via de controller kan nu hier aangesproken worden-->
+<p>De kleur van de gekozen cookie: <span th:text="${kleur}"></span></p>
+
+<!--Aanroepen van de controller via de attribuutnaam, methode of waarde wordt getoond-->
+<p>Deze pagina werd <span th:text="${aantalKeerBekeken}"></span> keer bekeken.</p>
 </body>
 </html>

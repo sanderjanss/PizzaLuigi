@@ -10,10 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 @RequestMapping("/")
 class IndexController {
+    private final AtomicInteger aantalKeerBekeken = new AtomicInteger();
+
     private String boodschap() {
         int uur = LocalTime.now().getHour();
         if (uur < 12) {
@@ -32,6 +35,8 @@ class IndexController {
                     0, false, LocalDate.of(1992,7,9), new Adres("Oversneslaan", "47", 2610, "Wilrijk")));
 //    de kleur adden in een object zodat deze bruikbaar wordt in deze controller
             modelAndView.addObject("kleur", kleur);
+//    incrementAndGet verhoogt de teller in AtomicInteger op een threadSafeManier
+            modelAndView.addObject("aantalKeerBekeken", aantalKeerBekeken.incrementAndGet());
             return modelAndView;
 
     }

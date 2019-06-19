@@ -1,8 +1,8 @@
 package be.vdab.luigi.controllers;
 
 import be.vdab.luigi.domain.Pizza;
+import be.vdab.luigi.services.EuroService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +10,36 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("pizzas")
 public class PizzaController {
 //    Hier worden de controller methods van de templates geschreven.
+    private final EuroService euroService;
+
+    PizzaController(EuroService euroService) {
+        this.euroService = euroService;
+    }
+
+    private List<BigDecimal> uniekePrijzen() {
+        return Arrays.stream(pizzas).map(pizza -> pizza.getPrijs())
+                .distinct().sorted().collect(Collectors.toList());
+    }
+    @GetMapping("prijzen")
+    public ModelAndView prijzen() {
+        return new ModelAndView("prijzen", "prijzen", uniekePrijzen());
+    }
+    private List<Pizza> pizzasMetPrijs(BigDecimal prijs) {
+        return Arrays.stream(pizzas)
+                .filter(pizza -> pizza.getPrijs().compareTo(prijs) == 0)
+                .collect(Collectors.toList());
+    }
+    @GetMapping("prijzen/{prijs}")
+    public ModelAndView pizzasMetEenPrijs(@PathVariable BigDecimal prijs) {
+        return new ModelAndView("prijzen", "pizzas", pizzasMetPrijs(prijs))
+                .addObject("prijzen", uniekePrijzen());
+    }
 
     private final Pizza[] pizzas = {
             new Pizza(1, "Prosciutto", BigDecimal.valueOf(4), true),
@@ -28,6 +53,9 @@ public class PizzaController {
     @GetMapping
     public ModelAndView pizzas(){
         return new ModelAndView("pizzas", "pizzas", pizzas);
+        //    viewName: staat voor de html / Thymeleaf pagina
+        //    modelName: deze naam spreek je aan in de Thymeleaf pagina als -> th:object="${pizza}"
+        //    variabele: staat voor de variabele die je er in steekt, de array pizzas in dit geval
     }
 
 //    DIT IS EEN URI TEMPLATE WAAR path variabele id MEEGEGEVEN WORDT
@@ -36,10 +64,14 @@ public class PizzaController {
     public ModelAndView pizza(@PathVariable long id) {
         ModelAndView modelAndView = new ModelAndView("pizza");
         Arrays.stream(pizzas).filter(pizza -> pizza.getId() == id).findFirst()
-                .ifPresent(pizza -> modelAndView.addObject("pizza", pizza));
+                .ifPresent(pizza -> {
+        modelAndView.addObject(pizza);
+        modelAndView.addObject("inDollar", euroService.naarDollar(pizza.getPrijs()));
+
+    });
         return modelAndView;
     }
-    
+
 
 
 }
