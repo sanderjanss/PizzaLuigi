@@ -50,7 +50,7 @@ public class VanTotPrijsFormTest {
     }
 
     @Test
-    public void totnMoetMinstensNulZijn() {
+    public void totMoetMinstensNulZijn() {
         assertThat(validator.validateValue(VanTotPrijsForm.class, "tot", MIN_EEN))
                 .isNotEmpty();
     }

@@ -1,5 +1,6 @@
 package be.vdab.luigi.controllers;
 
+import be.vdab.luigi.domain.Pizza;
 import be.vdab.luigi.forms.VanTotPrijsForm;
 import be.vdab.luigi.services.EuroService;
 import be.vdab.luigi.services.PizzaService;
@@ -84,6 +85,11 @@ public class PizzaController {
             return modelAndView;
         }
         return modelAndView.addObject("pizzas", pizzaService.findByPrijsBetween(form.getVan(), form.getTot()));
+    }
+
+    @GetMapping("toevoegen/form")
+    public ModelAndView toevoegenForm(){
+        return new ModelAndView("toevoegen").addObject(new Pizza(0," ", null, false));
     }
 
 
