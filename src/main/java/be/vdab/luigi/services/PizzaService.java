@@ -17,3 +17,6 @@ public interface PizzaService {
     List<BigDecimal> findUniekePrijzen();
     List<Pizza> findByPrijs(BigDecimal prijs);
 }
+
+//Dit is een interface die geinjecteerd wordt als dependency naar een controller. Daar wordt er een bean van gemaakt eenmaal de website start
+//Deze bean wordt in de constructor gestopt en op deze manier kan je de methodes ook in de controller gebruiken

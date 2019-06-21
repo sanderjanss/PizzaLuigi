@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="nl" xmlns:th='http://www.thymeleaf.org'>
+<head th:replace="fragmenten::head(title='Operating System')"></head>
+<body>
+<nav th:replace="fragmenten::menu"></nav>
+<h1>Uw operating system is
+<span th:text="${os} == null ? 'onbekend' : ${os}"></span>.</h1>
+
+
+
+</body>
+</html>

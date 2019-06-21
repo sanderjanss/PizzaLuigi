@@ -13,6 +13,8 @@ import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
+//Controller schrijf je bij een controller die samenwerkt met een thymeleaf pagina
+//Nu kan spring een bean maken van deze class
 @RequestMapping("/")
 class IndexController {
     private final AtomicInteger aantalKeerBekeken = new AtomicInteger();
@@ -40,7 +42,8 @@ class IndexController {
             return modelAndView;
 
     }
-
+//De controller bevat verwijzingen naar de thymeleaf pagina en kan op die manier data doorgeven naar th.
+//Deze data kunnen objecten zijn, variabelen, lijsten, arrays, ...
 
 
 }

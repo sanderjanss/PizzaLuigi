@@ -28,4 +28,9 @@ public class Adres {
         this.postcode = postcode;
         this.gemeente = gemeente;
     }
+    //Programmeurs maken weinig setters, ze maken op deze manier hun objecten IMMUTABLE.
+    //Je initialiseerd de variabelen van je object in de constructor, je wijzigt daarna de variabelen niet meer.
+    //IMMUTABLE OBJECTS zijn thread safe, met meerderen een object lezen is altijd veilig, tegelijk een object wijzigen kan fataal zijn.
+    //Vben van immutable classes: STRING, BIGDECIMAL, LOCALDATE, ...
+    //Om fouten hierbij te vermijden maak je de variabelen FINAL!
 }

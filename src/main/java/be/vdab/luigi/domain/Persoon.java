@@ -9,6 +9,7 @@ public class Persoon {
     private final boolean gehuwd;
     private final LocalDate geboorte;
     private final Adres adres;
+    // ADRES is een GENEST OBJECT,
 
     public Persoon(String voornaam, String familienaam, int aantalKinderen, boolean gehuwd, LocalDate geboorte, Adres adres) {
         this.voornaam = voornaam;
