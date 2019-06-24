@@ -2,17 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragmenten::head(title='Pizza\'s')"></head>
 <body>
+<div th:if="${param.toegevoegd}!=null" class="boodschap">Pizza is toegevoegd.
+    Hij heeft het nummer <span th:text="${param.toegevoegd}"></span>.</div>
 <h1>Pizza Luigi</h1>
 <nav th:replace="fragmenten::menu"></nav>
 <h2>Aanbod pizzas!</h2>
+
 <img th:src="@{/images/luigi.jpg}" alt="pizza" class="fullwidth">
 <ul class="zebra">
     <li th:each="pizza:${pizzas}" th:object="${pizza}">
-        <span th:text="|*{naam} EUR *{prijs}|"></span>
+        <span th:text="|*{naam} EUR *{{prijs}}|"></span>
         <span th:if="*{pikant}"> pikant</span>
         <a th:href="@{/pizzas/{id}(id=*{id})}">detail</a>
     </li>
 </ul>
+
+<p>Uw Emailadres: <span th:text="${identificatie.emailAdres}"></span>.</p>
 
 </body>
 </html>

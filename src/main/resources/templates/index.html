@@ -16,14 +16,18 @@
     <dd th:text="*{gehuwd} ? 'Ja' : 'Nee'"></dd>
     <dt>Adres</dt>
     <dd th:object="${zaakvoerder.adres}"
-        th:text="|*{straat} *{huisNr} *{postcode} *{gemeente}|"></dd></dl>
-
+        th:text="|*{straat} *{huisNr} *{postcode} *{gemeente}|"></dd>
+    <dt>Geboorte</dt>
+    <dd th:text="*{{geboorte}}"></dd>
+</dl>
 
 <!--De kleur die we doorgaven via de controller kan nu hier aangesproken worden-->
 <p>De kleur van de gekozen cookie: <span th:text="${kleur}"></span></p>
 
 <!--Aanroepen van de controller via de attribuutnaam, methode of waarde wordt getoond-->
 <p>Deze pagina werd <span th:text="${aantalKeerBekeken}"></span> keer bekeken.</p>
+
+<p>Uw Emailadres: <span th:text="${identificatie.emailAdres}"></span>.</p>
 </body>
 <!--De Controller en de thymeleaf pagina werken samen bij het verwerken van browser requests-->
 </html>

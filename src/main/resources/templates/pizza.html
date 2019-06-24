@@ -7,14 +7,15 @@
     <span th:text="${id}"></span>
 </h1>
 <div th:if="${pizza} != null" th:object="${pizza}">
+
     <h1 th:text="*{naam}"></h1>
     <dl>
         <dt>Nummer</dt>
         <dd th:text="*{id}"></dd>
         <dt>Prijs</dt>
-        <dd th:text="|*{prijs} euro|"></dd>
+        <dd th:text="|*{{prijs}} euro|"></dd>
         <dt>In dollar</dt>
-        <dd th:text="${inDollar}"></dd>
+        <dd th:text="${#numbers.formatDecimal(inDollar,1,2)}"></dd>
         <dt>Pikant</dt>
         <dd th:text="*{pikant} ? 'Ja' : 'Nee'"></dd>
     </dl>
