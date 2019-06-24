@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@Import(FixerKoersClient.class)
+@Import(ECBKoersClient.class)
 @PropertySource("application.properties")
 public class ECBKoersClientTest {
     @Autowired
