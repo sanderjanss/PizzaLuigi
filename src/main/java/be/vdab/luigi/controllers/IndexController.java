@@ -33,8 +33,8 @@ class IndexController {
 //    de kleur waarde wordt meegegeven in de parameter
     public ModelAndView index(@CookieValue(name = "kleur", required = false) String kleur) {
             ModelAndView modelAndView = new ModelAndView("index", "boodschap", boodschap());
-            modelAndView.addObject("zaakvoerder", new Persoon("Sander", "Janssens",
-                    0, false, LocalDate.of(1992,7,9), new Adres("Oversneslaan", "47", 2610, "Wilrijk")));
+            modelAndView.addObject("zaakvoerder", new Persoon("John", "Johnson",
+                    0, false, LocalDate.of(1950,1,1), new Adres("Meir", "2000", 2000, "Antwerpen")));
 //    de kleur adden in een object zodat deze bruikbaar wordt in deze controller
             modelAndView.addObject("kleur", kleur);
 //    incrementAndGet verhoogt de teller in AtomicInteger op een threadSafeManier
